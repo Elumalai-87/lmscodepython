@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Physics</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .timer {
+      font-size: 16px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .w3-button {
+      margin-top: 10px;
+      margin-right: 20px;
+    }
+  </style>
+  <script>
+    let minutes = 30;
+    let seconds = 0;
+
+    function updateTimer() {
+      if (seconds === 0 && minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (seconds > 0) {
+        seconds--;
+      }
+
+      let time = minutes < 10 ? '0' + minutes : minutes;
+      time += ":" + (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById("timer").innerHTML = "Time remaining: " + time;
+    }
+    setInterval(updateTimer, 1000);
+  </script>
+</head>
+<body>
+
+  <!-- Quiz Button (Top Left) -->
+  <div class="w3-container w3-left">
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue w3-margin-top">Take the Quiz</a>
+  </div>
+
+  <!-- Timer (Top Right) -->
+  <div class="w3-container w3-right">
+    <div id="timer" class="timer">Time remaining: 30:00</div>
+  </div>
+
+  <div class="w3-container w3-padding">
+    <h2 class="w3-teal">Physics Course</h2>
+    <p>Explore mechanics, electromagnetism, thermodynamics, and more!</p>
+
+    <!-- Sample Physics Problems -->
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Mechanics Questions</h4>
+      <p><strong>1. What is the velocity of an object that travels 100 meters in 5 seconds?</strong></p>
+      <p><strong>Answer:</strong> Velocity = distance/time = 100m / 5s = 20 m/s</p>
+      
+      <p><strong>2. Calculate the acceleration of a car that goes from rest to 20 m/s in 10 seconds.</strong></p>
+      <p><strong>Answer:</strong> Acceleration = change in velocity/time = (20 - 0) / 10 = 2 m/s²</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Electromagnetism Questions</h4>
+      <p><strong>1. What is the force between two charges of 3 μC and 5 μC separated by a distance of 2 meters?</strong></p>
+      <p><strong>Answer:</strong> F = k * (q₁ * q₂) / r² = 8.99 * 10⁹ * (3 * 10⁻⁶ * 5 * 10⁻⁶) / (2²) = 0.337 N</p>
+      
+      <p><strong>2. Calculate the magnetic field strength at a distance of 1 meter from a long straight wire carrying a current of 5 A.</strong></p>
+      <p><strong>Answer:</strong> B = (μ₀ * I) / (2 * π * r) = (4π * 10⁻⁷ * 5) / (2 * π * 1) = 10⁻⁷ T</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Thermodynamics Questions</h4>
+      <p><strong>1. What is the work done when a gas expands from 2 L to 5 L at constant pressure of 10 atm?</strong></p>
+      <p><strong>Answer:</strong> Work = pressure * change in volume = 10 atm * (5 - 2) L = 30 L·atm</p>
+      
+      <p><strong>2. Calculate the efficiency of a heat engine that absorbs 400 J of heat and does 200 J of work.</strong></p>
+      <p><strong>Answer:</strong> Efficiency = Work done / Heat absorbed = 200 / 400 = 0.5 or 50%</p>
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('courses') }}" class="w3-button w3-grey">Back</a>
+  </div>
+
+</body>
+</html>

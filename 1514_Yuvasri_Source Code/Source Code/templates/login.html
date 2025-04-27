@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <!-- Include Bootstrap CSS for design consistency -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8i7v3luJ4I6R3C6I6jyfR6FeqP5J6k49g8tuJr59EL/dt4V5gG5d6T9f3g" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .login-container input {
+            margin-bottom: 15px;
+        }
+
+        .login-container .btn-primary {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .login-container .form-text {
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .flash-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Student Login</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, msg in messages %}
+            <div class="flash-message">{{ msg }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="post">
+        <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <p class="form-text mt-3">Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+</div>
+
+<div class="footer">
+    <p>&copy; 2025 Student Portal. All rights reserved.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0b8s8u5LRcZk2RBQyjtY4G/h5HcY4A1jLkn6fdrx8bF+M7s7" crossorigin="anonymous"></script>
+
+</body>
+</html>

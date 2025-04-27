@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certification</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <div class="w3-container w3-indigo">
+    <h2>Generate Your Certificate</h2>
+  </div>
+  <div class="w3-container w3-padding">
+    <form method="POST">
+      <label class="w3-text-teal"><b>Your Name</b></label>
+      <input class="w3-input w3-border w3-margin-bottom" name="student_name" required>
+
+      <label class="w3-text-teal"><b>Course Name</b></label>
+      <input class="w3-input w3-border w3-margin-bottom" name="course_name" required>
+
+      <button class="w3-button w3-green">Generate Certificate</button>
+    </form>
+    <br>
+    <a href="{{ url_for('home_page') }}" class="w3-button w3-teal">Back to Home</a>
+  </div>
+</body>
+</html>

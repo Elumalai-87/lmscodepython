@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Tutorial</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .timer {
+      font-size: 16px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .content-section {
+      display: none;
+      margin-top: 20px;
+    }
+    .active {
+      display: block;
+    }
+    .w3-button {
+      margin-bottom: 10px;
+    }
+    .question-section {
+      margin-top: 20px;
+    }
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-left: 20px;
+    }
+  </style>
+  <script>
+    let minutes = 30;
+    let seconds = 0;
+
+    function updateTimer() {
+      if (seconds === 0 && minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (seconds > 0) {
+        seconds--;
+      }
+
+      let time = minutes < 10 ? '0' + minutes : minutes;
+      time += ":" + (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById("timer").innerHTML = "Time remaining: " + time;
+    }
+    setInterval(updateTimer, 1000);
+
+    function showContent(sectionId) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+</head>
+<body>
+
+  <div class="w3-container w3-orange">
+    <h2>HTML Tutorial</h2>
+  </div>
+  
+  <!-- Quiz Button -->
+  <div class="w3-container w3-margin-top">
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue">Take the Quiz</a>
+  </div>
+
+  <div class="w3-container w3-right">
+    <div id="timer" class="timer">Time remaining: 30:00</div>
+  </div>
+
+  <div class="w3-container">
+    <p>Welcome to the HTML tutorial. Learn how to structure web pages with HTML!</p>
+
+    <!-- Section Buttons -->
+    <button class="w3-button w3-teal" onclick="showContent('introContent')">Introduction</button>
+    <button class="w3-button w3-teal" onclick="showContent('syntaxContent')">HTML Basic Syntax</button>
+    <button class="w3-button w3-teal" onclick="showContent('elementsContent')">HTML Elements</button>
+    <button class="w3-button w3-teal" onclick="showContent('attributesContent')">HTML Attributes</button>
+    <button class="w3-button w3-teal" onclick="showContent('formsContent')">HTML Forms</button>
+    <button class="w3-button w3-teal" onclick="showContent('linksContent')">HTML Links</button>
+    <button class="w3-button w3-teal" onclick="showContent('imagesContent')">HTML Images</button>
+    <button class="w3-button w3-teal" onclick="showContent('tablesContent')">HTML Tables</button>
+    
+    <br><br>
+
+    <!-- Content Sections -->
+    <div id="introContent" class="content-section active">
+      <h3>Introduction</h3>
+      <p>This section will introduce you to the basics of HTML. Learn about HTML structure, tags, and elements.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What does HTML stand for?</p>
+        <div class="answer">
+          <p>A: HTML stands for HyperText Markup Language.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="syntaxContent" class="content-section">
+      <h3>HTML Basic Syntax</h3>
+      <p>This section covers the basic syntax of HTML including the doctype declaration and HTML tags.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is the purpose of the `<!DOCTYPE html>` declaration?</p>
+        <div class="answer">
+          <p>A: It defines the document type and version of HTML being used.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="elementsContent" class="content-section">
+      <h3>HTML Elements</h3>
+      <p>Learn about common HTML elements such as headings, paragraphs, links, and images.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: Which tag is used for a paragraph?</p>
+        <div class="answer">
+          <p>A: The `<p>` tag is used to define a paragraph in HTML.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="attributesContent" class="content-section">
+      <h3>HTML Attributes</h3>
+      <p>This section explains HTML attributes like class, id, src, href, and how they enhance tags.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is the purpose of the `src` attribute?</p>
+        <div class="answer">
+          <p>A: The `src` attribute specifies the URL of the image or media file in `<img>`, `<audio>`, and `<video>` tags.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="formsContent" class="content-section">
+      <h3>HTML Forms</h3>
+      <p>Learn to create forms using input fields, checkboxes, radio buttons, and submit buttons.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: Which tag is used to create an HTML form?</p>
+        <div class="answer">
+          <p>A: The `<form>` tag is used to create an HTML form.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="linksContent" class="content-section">
+      <h3>HTML Links</h3>
+      <p>Use the `<a>` tag to create hyperlinks to other pages, websites, or internal sections.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How do you create a hyperlink in HTML?</p>
+        <div class="answer">
+          <p>A: You use the `<a>` tag with the `href` attribute to create hyperlinks. Example: `<a href="https://www.example.com">Click here</a>`.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="imagesContent" class="content-section">
+      <h3>HTML Images</h3>
+      <p>Learn how to embed images with the `<img>` tag and control size, alt text, and layout.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: Which tag is used to display an image?</p>
+        <div class="answer">
+          <p>A: The `<img>` tag is used to display images in HTML.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tablesContent" class="content-section">
+      <h3>HTML Tables</h3>
+      <p>Understand table structure with `<table>`, `<tr>`, `<th>`, and `<td>` elements.</p>
+      
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What tag is used to create a table?</p>
+        <div class="answer">
+          <p>A: The `<table>` tag is used to create a table in HTML.</p>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

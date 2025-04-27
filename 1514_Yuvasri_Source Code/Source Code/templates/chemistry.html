@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chemistry</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .timer {
+      font-size: 16px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .w3-button {
+      margin-top: 10px;
+      margin-right: 20px;
+    }
+  </style>
+  <script>
+    let minutes = 30;
+    let seconds = 0;
+
+    function updateTimer() {
+      if (seconds === 0 && minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (seconds > 0) {
+        seconds--;
+      }
+
+      let time = minutes < 10 ? '0' + minutes : minutes;
+      time += ":" + (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById("timer").innerHTML = "Time remaining: " + time;
+    }
+    setInterval(updateTimer, 1000);
+  </script>
+</head>
+<body>
+
+  <!-- Quiz Button (Top Left) -->
+  <div class="w3-container w3-left">
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue w3-margin-top">Take the Quiz</a>
+  </div>
+
+  <!-- Timer (Top Right) -->
+  <div class="w3-container w3-right">
+    <div id="timer" class="timer">Time remaining: 30:00</div>
+  </div>
+
+  <div class="w3-container w3-padding">
+    <h2 class="w3-teal">Chemistry Course</h2>
+    <p>Explore the periodic table, chemical reactions, and organic chemistry!</p>
+
+    <!-- Sample Chemistry Problems -->
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Chemical Reactions Questions</h4>
+      <p><strong>1. What is the balanced equation for the combustion of methane (CH₄)?</strong></p>
+      <p><strong>Answer:</strong> CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+      
+      <p><strong>2. What is the pH of a solution with a hydrogen ion concentration of 1 × 10⁻⁷ M?</strong></p>
+      <p><strong>Answer:</strong> pH = -log[H⁺] = -log(1 × 10⁻⁷) = 7 (Neutral)</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Organic Chemistry Questions</h4>
+      <p><strong>1. What is the structure of methane (CH₄)?</strong></p>
+      <p><strong>Answer:</strong> Methane (CH₄) has a tetrahedral structure with the carbon atom at the center and the four hydrogen atoms at the vertices.</p>
+      
+      <p><strong>2. What is the difference between an alkane and an alkene?</strong></p>
+      <p><strong>Answer:</strong> Alkanes are saturated hydrocarbons with single bonds (C–C), while alkenes are unsaturated hydrocarbons with at least one double bond (C=C).</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Periodic Table Questions</h4>
+      <p><strong>1. What is the atomic number of Oxygen?</strong></p>
+      <p><strong>Answer:</strong> Oxygen (O) has an atomic number of 8.</p>
+      
+      <p><strong>2. What element has the symbol 'Na'?</strong></p>
+      <p><strong>Answer:</strong> Sodium (Na) is the element with the symbol 'Na'.</p>
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('courses') }}" class="w3-button w3-grey">Back</a>
+  </div>
+
+</body>
+</html>

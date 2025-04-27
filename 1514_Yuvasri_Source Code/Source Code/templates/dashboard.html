@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    .w3-sidebar {
+      width: 250px;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      z-index: 3;
+      padding-top: 20px;
+    }
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .top-bar {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+    }
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .top-bar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="w3-sidebar w3-light-grey w3-bar-block">
+    <h3 class="w3-bar-item">Dashboard</h3>
+    <a href="home_pages" class="w3-bar-item w3-button">Home</a>
+    <a href="dashboard" class="w3-bar-item w3-button">Profile</a>
+    <a href="courses" class="w3-bar-item w3-button">Courses</a>
+    <a href="{{ url_for('logout') }}" class="w3-bar-item w3-button">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <span>Welcome, {{ student.first_name }} {{ student.last_name }}</span>
+      <a href="{{ url_for('logout') }}" class="w3-right">Logout</a>
+    </div>
+
+    <!-- Student Details -->
+    <div class="w3-card-4 w3-margin-top">
+      <div class="w3-container w3-green">
+        <h4>Student Information</h4>
+      </div>
+      <div class="w3-container">
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Phone:</strong> {{ student.phone }}</p>
+        <p><strong>ID Number:</strong> {{ student.id_number }}</p>
+        <p><strong>School:</strong> {{ student.school_name }}</p>
+        <p><strong>Standard:</strong> {{ student.standard }}</p>
+      </div>
+    </div>
+
+   <!-- Additional Content -->
+<div class="w3-row-padding w3-margin-top">
+  <!-- Recent Activity -->
+  <div class="w3-third">
+    <div class="w3-card-4">
+      <div class="w3-container w3-blue">
+        <h4>Recent Activity</h4>
+      </div>
+      <div class="w3-container">
+        <p><strong>Course Completed:</strong> You have successfully completed your Chemistry course with a grade of A+!</p>
+        <p><strong>Assignment Submission:</strong> Your Physics assignment on "Quantum Mechanics" was submitted yesterday.</p>
+        <p><strong>Quiz Result:</strong> You scored 85% on the recent Biology quiz on "Human Anatomy."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming Events -->
+  <div class="w3-third">
+    <div class="w3-card-4">
+      <div class="w3-container w3-teal">
+        <h4>Upcoming Events</h4>
+      </div>
+      <div class="w3-container">
+        <p><strong>Science Fair:</strong> Join the annual Science Fair on May 15th, 2025. Registration opens soon!</p>
+        <p><strong>Guest Lecture:</strong> A guest lecture on "Advanced Physics" will be held on April 30th, 2025, by Dr. Emily Stevens.</p>
+        <p><strong>Workshop on AI:</strong> Participate in the AI and Machine Learning Workshop on June 5th, 2025.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div class="w3-third">
+    <div class="w3-card-4">
+      <div class="w3-container w3-orange">
+        <h4>Notifications</h4>
+      </div>
+      <div class="w3-container">
+        <p><strong>New Grades Available:</strong> Your results for the recent tests in Mathematics and Chemistry are now available. Check your grades!</p>
+        <p><strong>Upcoming Exam:</strong> The final exam for Physics is scheduled for June 1st, 2025. Make sure to review your notes!</p>
+        <p><strong>Scholarship Application:</strong> The application deadline for the National Scholarship Program is approaching on May 20th, 2025. Don't miss out!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

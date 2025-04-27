@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Tutorial</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <style>
+    .timer {
+      font-size: 16px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .content-section {
+      display: none;
+      margin-top: 20px;
+    }
+    .active {
+      display: block;
+    }
+    .w3-button {
+      margin-bottom: 10px;
+    }
+    .question-section {
+      margin-top: 20px;
+    }
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-left: 20px;
+    }
+  </style>
+  <script>
+    let minutes = 30;
+    let seconds = 0;
+
+    function updateTimer() {
+      if (seconds === 0 && minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (seconds > 0) {
+        seconds--;
+      }
+
+      let time = minutes < 10 ? '0' + minutes : minutes;
+      time += ":" + (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById("timer").innerHTML = "Time remaining: " + time;
+    }
+    setInterval(updateTimer, 1000);
+
+    function showContent(sectionId) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+</head>
+<body>
+
+  <div class="w3-container w3-light-green">
+    <h2>JavaScript Tutorial</h2>
+  </div>
+
+  <!-- Quiz Button -->
+  <div class="w3-container w3-margin-top">
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue">Take the Quiz</a>
+  </div>
+
+  <!-- Timer -->
+  <div class="w3-container w3-right">
+    <div id="timer" class="timer">Time remaining: 30:00</div>
+  </div>
+
+  <div class="w3-container">
+    <p>Welcome to the JavaScript tutorial. Learn how to make your web pages interactive and dynamic!</p>
+
+    <!-- Section Buttons -->
+    <button class="w3-button w3-teal" onclick="showContent('introContent')">Introduction</button>
+    <button class="w3-button w3-teal" onclick="showContent('syntaxContent')">JS Syntax</button>
+    <button class="w3-button w3-teal" onclick="showContent('variablesContent')">Variables</button>
+    <button class="w3-button w3-teal" onclick="showContent('datatypesContent')">Data Types</button>
+    <button class="w3-button w3-teal" onclick="showContent('operatorsContent')">Operators</button>
+    <button class="w3-button w3-teal" onclick="showContent('functionsContent')">Functions</button>
+    <button class="w3-button w3-teal" onclick="showContent('eventsContent')">Events</button>
+    <button class="w3-button w3-teal" onclick="showContent('domContent')">DOM Manipulation</button>
+    <button class="w3-button w3-teal" onclick="showContent('loopsContent')">Loops</button>
+    <button class="w3-button w3-teal" onclick="showContent('arraysContent')">Arrays</button>
+
+    <br><br>
+
+    <!-- Content Sections -->
+    <div id="introContent" class="content-section active">
+      <h3>Introduction</h3>
+      <p>JavaScript is the programming language of the web. Learn how it can make websites interactive.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is JavaScript used for?</p>
+        <div class="answer">
+          <p>A: JavaScript is used to create interactive and dynamic web pages. It can be used for event handling, DOM manipulation, and more.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="syntaxContent" class="content-section">
+      <h3>JS Syntax</h3>
+      <p>Understand how to write valid JavaScript statements, blocks, and scripts.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is the correct syntax to declare a variable in JavaScript?</p>
+        <div class="answer">
+          <p>A: The correct syntax is `let variableName;`, `const variableName;` or `var variableName;`.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="variablesContent" class="content-section">
+      <h3>Variables</h3>
+      <p>Learn how to declare variables using <code>var</code>, <code>let</code>, and <code>const</code>.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is the difference between <code>let</code> and <code>const</code>?</p>
+        <div class="answer">
+          <p>A: The <code>let</code> keyword allows variable reassignment, while <code>const</code> declares a constant value that cannot be reassigned.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="datatypesContent" class="content-section">
+      <h3>Data Types</h3>
+      <p>JavaScript supports strings, numbers, booleans, objects, undefined, and more.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What are the primitive data types in JavaScript?</p>
+        <div class="answer">
+          <p>A: The primitive data types in JavaScript are: <code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Null</code>, <code>Undefined</code>, <code>Symbol</code>, and <code>BigInt</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="operatorsContent" class="content-section">
+      <h3>Operators</h3>
+      <p>Explore arithmetic, assignment, comparison, and logical operators in JavaScript.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: What is the difference between <code>==</code> and <code>===</code> in JavaScript?</p>
+        <div class="answer">
+          <p>A: The <code>==</code> operator checks for equality of values, whereas the <code>===</code> operator checks for both equality of value and type.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="functionsContent" class="content-section">
+      <h3>Functions</h3>
+      <p>Learn to create and invoke functions to structure reusable code blocks.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How do you define a function in JavaScript?</p>
+        <div class="answer">
+          <p>A: You define a function using the <code>function</code> keyword. Example: <code>function myFunction() { ... }</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="eventsContent" class="content-section">
+      <h3>Events</h3>
+      <p>Handle user interactions like clicks, form submissions, and keyboard input using event listeners.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How do you add an event listener to a button in JavaScript?</p>
+        <div class="answer">
+          <p>A: You can add an event listener using <code>addEventListener</code>. Example: <code>button.addEventListener('click', function() { ... });</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="domContent" class="content-section">
+      <h3>DOM Manipulation</h3>
+      <p>Access and change HTML elements dynamically using JavaScript and the Document Object Model.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How do you change the text content of an HTML element in JavaScript?</p>
+        <div class="answer">
+          <p>A: You can change the text content using <code>element.textContent = 'New text';</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="loopsContent" class="content-section">
+      <h3>Loops</h3>
+      <p>Use <code>for</code>, <code>while</code>, and <code>do...while</code> loops to repeat code.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How does a <code>for</code> loop work in JavaScript?</p>
+        <div class="answer">
+          <p>A: A <code>for</code> loop allows you to repeat a block of code a set number of times. Example: <code>for (let i = 0; i < 5; i++) { ... }</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="arraysContent" class="content-section">
+      <h3>Arrays</h3>
+      <p>Store multiple values in a single variable using arrays and learn how to manipulate them.</p>
+
+      <!-- Sample Questions and Answers -->
+      <div class="question-section">
+        <p class="question">Q1: How do you create an array in JavaScript?</p>
+        <div class="answer">
+          <p>A: You can create an array using square brackets. Example: <code>let arr = [1, 2, 3];</code>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Biology Course</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .timer {
+      font-size: 16px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .w3-button {
+      margin-top: 10px;
+      margin-right: 20px;
+    }
+  </style>
+  <script>
+    let minutes = 30;
+    let seconds = 0;
+
+    function updateTimer() {
+      if (seconds === 0 && minutes > 0) {
+        minutes--;
+        seconds = 59;
+      } else if (seconds > 0) {
+        seconds--;
+      }
+
+      let time = minutes < 10 ? '0' + minutes : minutes;
+      time += ":" + (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById("timer").innerHTML = "Time remaining: " + time;
+    }
+    setInterval(updateTimer, 1000);
+  </script>
+</head>
+<body>
+
+  <!-- Quiz Button (Top Left) -->
+  <div class="w3-container w3-left">
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue w3-margin-top">Take the Quiz</a>
+  </div>
+
+  <!-- Timer (Top Right) -->
+  <div class="w3-container w3-right">
+    <div id="timer" class="timer">Time remaining: 30:00</div>
+  </div>
+
+  <div class="w3-container w3-padding">
+    <h2 class="w3-teal">Biology Course</h2>
+    <p>Explore the study of living organisms and their vital processes.</p>
+
+    <!-- Sample Biology Problems -->
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Cell Biology Questions</h4>
+      <p><strong>1. What is the function of mitochondria in a cell?</strong></p>
+      <p><strong>Answer:</strong> Mitochondria are responsible for producing energy in the form of ATP through cellular respiration.</p>
+      
+      <p><strong>2. What is the difference between prokaryotic and eukaryotic cells?</strong></p>
+      <p><strong>Answer:</strong> Prokaryotic cells lack a nucleus and membrane-bound organelles, while eukaryotic cells have a defined nucleus and organelles.</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Genetics Questions</h4>
+      <p><strong>1. What is a gene?</strong></p>
+      <p><strong>Answer:</strong> A gene is a segment of DNA that carries the instructions for synthesizing proteins, which determine an organism's traits.</p>
+      
+      <p><strong>2. What is the difference between dominant and recessive alleles?</strong></p>
+      <p><strong>Answer:</strong> A dominant allele expresses its trait over a recessive allele. A recessive allele requires two copies to express its trait.</p>
+    </div>
+
+    <div class="w3-card-4 w3-padding-16 w3-margin-top">
+      <h4>Ecology Questions</h4>
+      <p><strong>1. What is an ecosystem?</strong></p>
+      <p><strong>Answer:</strong> An ecosystem is a community of living organisms interacting with each other and their physical environment.</p>
+      
+      <p><strong>2. What is the role of producers in an ecosystem?</strong></p>
+      <p><strong>Answer:</strong> Producers, such as plants, use sunlight to produce food through photosynthesis, providing energy for other organisms in the ecosystem.</p>
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('courses') }}" class="w3-button w3-grey">Back</a>
+  </div>
+
+</body>
+</html>

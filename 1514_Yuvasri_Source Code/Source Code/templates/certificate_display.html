@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    .certificate {
+      border: 8px double #4CAF50;
+      padding: 40px;
+      margin: 40px auto;
+      width: 80%;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .certificate h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .certificate h2 {
+      font-size: 30px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="w3-container certificate">
+    <h1>Certificate of Completion</h1>
+    <p>This is to certify that</p>
+    <h2>{{ student_name }}</h2>
+    <p>has successfully completed the</p>
+    <h2>{{ course_name }}</h2>
+    <p>course.</p>
+    <br>
+    <p><i>Presented by Student Portal</i></p>
+  </div>
+</body>
+</html>

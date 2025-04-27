@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tutor Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+    <style>
+        .chat-container {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .input-box {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h2 class="text-center">Student Tutor Chatbot</h2>
+
+    <!-- Chatbox container -->
+    <div class="chat-box" id="chat-box"></div>
+
+    <!-- User Input Form -->
+    <div class="input-box">
+        <form id="chat-form">
+            <input type="text" id="user-input" class="form-control" placeholder="Ask your question here..." required>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Send</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Submit form handler
+        $('#chat-form').submit(function(event) {
+            event.preventDefault();
+
+            // Get the user input
+            let userInput = $('#user-input').val();
+            
+            // Display user input in chatbox
+            $('#chat-box').append('<p><strong>You:</strong> ' + userInput + '</p>');
+
+            // Clear the input field
+            $('#user-input').val('');
+
+            // Send the user input to the backend using AJAX
+            $.ajax({
+                url: '/ask',
+                type: 'POST',
+                data: { user_input: userInput },
+                success: function(data) {
+                    // Display model response in chatbox
+                    $('#chat-box').append('<p><strong>Model:</strong> ' + data.response + '</p>');
+                    
+                    // Scroll to the bottom of the chat
+                    $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
+                },
+                error: function() {
+                    $('#chat-box').append('<p><strong>Error:</strong> Something went wrong. Please try again later.</p>');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
